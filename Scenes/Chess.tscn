@@ -1,0 +1,78 @@
+[gd_scene format=4 uid="uid://cm83yhisi6oi6"]
+
+[ext_resource type="Script" uid="uid://bp4kjqiqt2bs" path="res://Scripts/chess.gd" id="1_o4rx8"]
+[ext_resource type="Script" uid="uid://imqknct6iyrs" path="res://Scripts/board.gd" id="3_bfgno"]
+[ext_resource type="Texture2D" uid="uid://j2hp57mefpms" path="res://Assets/ChessTextures/—Pngtree—checkerboard clipart check chess game_6166270.png" id="3_p0shu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2l625"]
+texture = ExtResource("3_p0shu")
+14:27/0 = 0
+15:27/0 = 0
+16:27/0 = 0
+16:28/0 = 0
+16:29/0 = 0
+16:30/0 = 0
+16:31/0 = 0
+49:36/0 = 0
+52:35/0 = 0
+52:34/0 = 0
+52:33/0 = 0
+52:32/0 = 0
+52:31/0 = 0
+52:30/0 = 0
+52:29/0 = 0
+53:28/0 = 0
+53:27/0 = 0
+53:26/0 = 0
+53:25/0 = 0
+53:24/0 = 0
+53:23/0 = 0
+54:27/0 = 0
+54:28/0 = 0
+54:29/0 = 0
+54:30/0 = 0
+54:31/0 = 0
+54:32/0 = 0
+54:33/0 = 0
+55:34/0 = 0
+55:35/0 = 0
+55:36/0 = 0
+55:37/0 = 0
+55:38/0 = 0
+55:39/0 = 0
+55:40/0 = 0
+56:41/0 = 0
+56:42/0 = 0
+56:43/0 = 0
+56:44/0 = 0
+55:42/0 = 0
+55:41/0 = 0
+54:40/0 = 0
+54:39/0 = 0
+54:38/0 = 0
+53:37/0 = 0
+53:36/0 = 0
+53:35/0 = 0
+51:32/0 = 0
+51:31/0 = 0
+51:30/0 = 0
+52:28/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wlc6x"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_2l625")
+
+[node name="Chess" type="Node2D" unique_id=750161248]
+script = ExtResource("1_o4rx8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=393782900]
+zoom = Vector2(4.5, 4.5)
+
+[node name="Board" type="TileMapLayer" parent="." unique_id=432505232]
+unique_name_in_owner = true
+position = Vector2(-76, -62)
+tile_map_data = PackedByteArray("AAAAAAAAAAA2ACYAAAABAAEAAAA2ACYAAAACAAIAAAA2ACYAAAADAAMAAAA2ACYAAAAEAAQAAAA2ACYAAAAFAAUAAAA2ACYAAAAGAAYAAAA2ACYAAAAHAAcAAAA2ACYAAAAGAAcAAAAQABsAAAAFAAYAAAAQABsAAAAEAAUAAAAQABsAAAADAAQAAAAQABsAAAACAAMAAAAQABsAAAABAAIAAAAQABsAAAAAAAEAAAAQABsAAAAAAAMAAAAQABsAAAABAAQAAAAQABsAAAACAAUAAAAQABsAAAADAAYAAAAQABsAAAAEAAcAAAAQABsAAAACAAcAAAAQABsAAAABAAYAAAAQABsAAAAAAAUAAAAQABsAAAAAAAcAAAAQABsAAAAHAAYAAAAQABsAAAAGAAUAAAAQABsAAAAFAAQAAAAQABsAAAAEAAMAAAAQABsAAAADAAIAAAAQABsAAAACAAEAAAAQABsAAAABAAAAAAAQABsAAAADAAAAAAAQABsAAAAEAAEAAAAQABsAAAAFAAIAAAAQABsAAAAGAAMAAAAQABsAAAAHAAQAAAAQABsAAAAHAAIAAAAQABsAAAAGAAEAAAAQABsAAAAFAAAAAAAQABsAAAAHAAAAAAAQABsAAAAHAAUAAAAzAB4AAAAHAAMAAAAzAB4AAAAHAAEAAAAzAB4AAAAGAAAAAAAzAB4AAAAGAAIAAAAzAB4AAAAGAAQAAAAzAB4AAAAFAAcAAAAzAB4AAAAFAAMAAAAzAB4AAAAFAAEAAAAzAB4AAAAEAAAAAAAzAB4AAAACAAAAAAAzAB4AAAADAAEAAAAzAB4AAAAEAAIAAAAzAB4AAAAEAAYAAAAzAB4AAAADAAUAAAAzAB4AAAADAAcAAAAzAB4AAAACAAYAAAAzAB4AAAABAAcAAAAzAB4AAAAAAAYAAAAzAB4AAAABAAUAAAAzAB4AAAACAAQAAAAzAB4AAAABAAMAAAAzAB4AAAAAAAQAAAAzAB4AAAAAAAIAAAAzAB4AAAA=")
+tile_set = SubResource("TileSet_wlc6x")
+script = ExtResource("3_bfgno")
+
+[connection signal="square_clicked" from="Board" to="." method="_on_board_square_clicked"]

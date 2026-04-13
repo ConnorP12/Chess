@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c52pirk1tuelt"]
+
+[ext_resource type="Script" uid="uid://dvvejrnsfnkb8" path="res://Scripts/piece_class.gd" id="1_0uknj"]
+
+[node name="PieceClass" type="Node2D" unique_id=574916941]
+script = ExtResource("1_0uknj")

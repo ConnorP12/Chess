@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bjdxecyyhny2d"]
+
+[ext_resource type="Script" uid="uid://b3fmv188tcee7" path="res://Scripts/human.gd" id="1_byrx8"]
+
+[node name="Human" type="Node2D" unique_id=1914156868]
+script = ExtResource("1_byrx8")
+metadata/_custom_type_script = "uid://b5l2rqq0cggrr"

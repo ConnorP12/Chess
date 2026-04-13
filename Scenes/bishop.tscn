@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ci5ol0pqedksx"]
+
+[ext_resource type="Script" uid="uid://binc07i5nubs2" path="res://Scripts/bishop.gd" id="1_boa6r"]
+[ext_resource type="Texture2D" uid="uid://ca8t2shoassp2" path="res://Assets/ChessTextures/BBishop.svg" id="2_uqrk8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66160"]
+atlas = ExtResource("2_uqrk8")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xe4ox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66160")
+}],
+"loop": true,
+"name": &"black",
+"speed": 0.0
+}]
+
+[node name="Bishop" type="Node2D" unique_id=901528104]
+scale = Vector2(0.44, 0.44)
+script = ExtResource("1_boa6r")
+metadata/_custom_type_script = "uid://dvvejrnsfnkb8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1667622967]
+sprite_frames = SubResource("SpriteFrames_xe4ox")
+animation = &"black"
