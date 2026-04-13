@@ -18,3 +18,7 @@ func _process(_delta: float) -> void:
 		global_position = get_global_mouse_position()
 	else:
 		global_position = board.get_tile_position(boardPosition)
+
+
+func _on_board_square_clicked(_square: Vector2i) -> void:
+	pass

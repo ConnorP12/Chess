@@ -7,7 +7,6 @@ func _ready() -> void:
 	selected = false
 	print(boardPosition) # Replace with function body.
 	possible_moves()
-	board.square_clicked.connect(_on_board_square_clicked)
 
 
 
@@ -17,4 +16,4 @@ func possible_moves():
 func _on_board_square_clicked(square: Vector2i) -> void:
 		if square == boardPosition:
 			selected = true
-			
+			print("click")
