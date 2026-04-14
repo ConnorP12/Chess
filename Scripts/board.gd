@@ -2,13 +2,12 @@ extends TileMapLayer
 
 signal square_clicked(square: Vector2i)
 
-func _unhandled_input(event):
+func _input(event):
     if event is InputEventMouseButton and event.pressed:
         if event.button_index == MOUSE_BUTTON_LEFT:
-            # 1. Get mouse position relative to this TileMapLayer
             var local_mouse_pos: Vector2 = to_local(get_global_mouse_position())
             
-            # 2. Convert that position to tile grid coordinates
+            # 2. Convert that posiion to tile grid coordinates
             var tile_pos: Vector2i = local_to_map(local_mouse_pos)
             
             # 3. Check if there is actually a tile there

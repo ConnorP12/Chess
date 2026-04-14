@@ -6,7 +6,7 @@ var boardPosition: Vector2i
 var selected: bool
 var colour: String
 var board
-
+var held: bool
 
 func possible_moves():
 	print("override this function")
@@ -14,7 +14,7 @@ func possible_moves():
 
 
 func _process(_delta: float) -> void:
-	if selected:
+	if held == true and Input.is_action_pressed("click"):
 		global_position = get_global_mouse_position()
 	else:
 		global_position = board.get_tile_position(boardPosition)
