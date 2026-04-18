@@ -1,5 +1,7 @@
 extends Node2D
 
+ 
+
 @onready var bishop = preload("res://Scenes/bishop.tscn")
 @onready var human = preload("res://Scenes/human.tscn")
 @onready var board = %Board
@@ -9,6 +11,9 @@ var player = {}
 func _ready() -> void:
 	# add the two players
 	player = {"white": human.instantiate(), "black": human.instantiate()}
+	player["white"].turn_over.connect(_on_player_turn_over)
+	player["black"].turn_over.connect(_on_player_turn_over)
+	
 	for p in player.values():
 		add_child(p)
 	# add a piece
@@ -17,5 +22,8 @@ func _ready() -> void:
 	# give each piece a reference to the board
 	player["black"].piece[0].board = board
 	board.square_clicked.connect(player["black"].piece[0]._on_board_square_clicked)
+
 	
-		
+func _on_player_turn_over() -> void:
+	for i in  player.value():
+		i.turn = not i.turn

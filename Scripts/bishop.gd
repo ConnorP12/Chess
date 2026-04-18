@@ -15,12 +15,8 @@ func possible_moves():
 
 func _on_board_square_clicked(square: Vector2i) -> void:
 		if square == boardPosition:
-			match selected:
-				true:
-					held = true
-				false:
-					selected = true
-					held = true
+			selected = true
+			held = true
 		else:
 			selected = false
 			held = false
