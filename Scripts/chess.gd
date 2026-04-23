@@ -25,5 +25,5 @@ func _ready() -> void:
 
 	
 func _on_player_turn_over() -> void:
-	for i in  player.value():
+	for i in  player.values():
 		i.turn = not i.turn
