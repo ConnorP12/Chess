@@ -5,12 +5,13 @@ extends Node2D
 @onready var bishop = preload("res://Scenes/bishop.tscn")
 @onready var human = preload("res://Scenes/human.tscn")
 @onready var board = %Board
-var pieces: Array
 var player = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# add the two players
 	player = {"white": human.instantiate(), "black": human.instantiate()}
+	for p in player.keys():
+		player[p].colour = p
 	player["white"].turn_over.connect(_on_player_turn_over)
 	player["black"].turn_over.connect(_on_player_turn_over)
 	
@@ -18,12 +19,27 @@ func _ready() -> void:
 		add_child(p)
 	# add a piece
 	player["black"].piece.append(bishop.instantiate())
+	player["white"].piece.append(bishop.instantiate())
+	player["white"].add_pieces()
+
 	player["black"].add_pieces()
 	# give each piece a reference to the board
 	player["black"].piece[0].board = board
+	player["white"].piece[0].board = board
+
 	board.square_clicked.connect(player["black"].piece[0]._on_board_square_clicked)
+	board.square_clicked.connect(player["white"].piece[0]._on_board_square_clicked)
+
 
 	
 func _on_player_turn_over() -> void:
-	for i in  player.values():
-		i.turn = not i.turn
+	player["black"].turn = not player["black"].turn
+	for piece in player["black"].piece:
+		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		print(piece.moves)
+	
+	player["white"].turn = not player["white"].turn
+	for piece in player["white"].piece:
+		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		print(piece.moves)
+	

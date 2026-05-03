@@ -1,7 +1,7 @@
 extends Node2D
 class_name Piece
 
-var moves: Array[Vector2i]
+var moves: Array
 var boardPosition: Vector2i
 var selected: bool
 var colour: String
@@ -9,8 +9,9 @@ var board
 var held: bool
 signal piece_moved
 
-func possible_moves():
-	print("override this function")
+func possible_moves(_enemyPieces: Array[Piece], _teamPieces: Array[Piece]) -> Array:
+	moves = [Vector2i(2, 2)]
+	return moves #make the moves
 
 
 
@@ -33,9 +34,10 @@ func _on_board_square_clicked(square: Vector2i) -> void:
 			selected = false
 			held = false
 	else:
-		#replace with checking if the move is possible
-		boardPosition = square
-		selected = false
-		held = false
-		piece_moved.emit()
+		for i in moves:
+			if i.x == square.x and i.y == square.y:
+				boardPosition = square
+				selected = false
+				held = false
+				piece_moved.emit()
 		
