@@ -16,10 +16,10 @@ func possible_moves(_enemyPieces: Array[Piece], _teamPieces: Array[Piece]) -> Ar
 
 
 func _process(_delta: float) -> void:
-	if held == true and Input.is_action_pressed("click"):
-		global_position = get_global_mouse_position()
-	else:
-		global_position = board.get_tile_position(boardPosition)
+	#if held == true and Input.is_action_pressed("click"):
+		#global_position = get_global_mouse_position()
+	#else:
+	global_position = board.get_tile_position(boardPosition)
 	if selected == true:
 		#make move and stuff
 		pass

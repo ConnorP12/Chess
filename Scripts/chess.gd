@@ -30,6 +30,15 @@ func _ready() -> void:
 	board.square_clicked.connect(player["black"].piece[0]._on_board_square_clicked)
 	board.square_clicked.connect(player["white"].piece[0]._on_board_square_clicked)
 
+	for piece in player["black"].piece:
+		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		print(piece.moves)
+	
+	player["white"].turn = not player["white"].turn
+	for piece in player["white"].piece:
+		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		print(piece.moves)
+
 
 	
 func _on_player_turn_over() -> void:
