@@ -26,6 +26,8 @@ func _ready() -> void:
 	# give each piece a reference to the board
 	player["black"].piece[0].board = board
 	player["white"].piece[0].board = board
+	player["white"].piece[0].boardPosition.x = 5
+	player["white"].piece[0].boardPosition.y = 4
 
 	board.square_clicked.connect(player["black"].piece[0]._on_board_square_clicked)
 	board.square_clicked.connect(player["white"].piece[0]._on_board_square_clicked)
@@ -36,7 +38,7 @@ func _ready() -> void:
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
-		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		piece.moves = piece.possible_moves(player["black"].piece, player["white"].piece)
 		print(piece.moves)
 
 
@@ -49,6 +51,6 @@ func _on_player_turn_over() -> void:
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
-		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		piece.moves = piece.possible_moves(player["black"].piece, player["white"].piece)
 		print(piece.moves)
 	
