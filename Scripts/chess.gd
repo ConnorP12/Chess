@@ -48,9 +48,19 @@ func _on_player_turn_over() -> void:
 	for piece in player["black"].piece:
 		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
 		print(piece.moves)
+		if player["black"].turn == true:
+			for enemyPiece in player["white"].piece:
+				if piece.boardPosition == enemyPiece.boardPosition:
+					player["black"].piece.erase(piece)
+					piece.queue_free()
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
 		piece.moves = piece.possible_moves(player["black"].piece, player["white"].piece)
 		print(piece.moves)
+		if player["white"].turn == true:
+			for enemyPiece in player["black"].piece:
+				if piece.boardPosition == enemyPiece.boardPosition:
+					player["white"].piece.erase(piece)
+					piece.queue_free()
 	
