@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://vcjmo7mkgoc"]
+
+[ext_resource type="Script" uid="uid://yljlsd4cvgr8" path="res://Scripts/rook.gd" id="1_j1kqh"]
+[ext_resource type="Texture2D" uid="uid://2an2oqh0ks1y" path="res://Assets/ChessTextures/BRook.svg" id="2_j1kqh"]
+[ext_resource type="Texture2D" uid="uid://qisaumos7b53" path="res://Assets/ChessTextures/WRook.svg" id="3_5ob0w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdgg5"]
+atlas = ExtResource("2_j1kqh")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjr7j"]
+atlas = ExtResource("3_5ob0w")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgw01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdgg5")
+}],
+"loop": true,
+"name": &"black",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjr7j")
+}],
+"loop": true,
+"name": &"white",
+"speed": 0.0
+}]
+
+[node name="Rook" type="Node2D" unique_id=1109718355]
+scale = Vector2(0.44, 0.44)
+script = ExtResource("1_j1kqh")
+metadata/_custom_type_script = "uid://dvvejrnsfnkb8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1614862827]
+sprite_frames = SubResource("SpriteFrames_qgw01")
+animation = &"white"

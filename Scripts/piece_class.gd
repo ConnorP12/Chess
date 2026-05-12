@@ -10,7 +10,7 @@ var held: bool
 signal piece_moved
 
 func possible_moves(_enemyPieces: Array[Piece], _teamPieces: Array[Piece]) -> Array:
-	moves = [Vector2i(2, 2)]
+	moves = [Vector2i(3, 2)]
 	return moves #make the moves
 
 
