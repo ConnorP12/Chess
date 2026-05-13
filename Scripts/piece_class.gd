@@ -41,3 +41,18 @@ func _on_board_square_clicked(square: Vector2i) -> void:
 				held = false
 				piece_moved.emit()
 		
+func slide( p: Vector2i, x: int, y: int, enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
+	var newMoves: Array
+	var teamOnSquare: bool = false
+	var enemyOnSquare: bool = false
+	for piece in enemyPieces:
+		if piece.boardPosition.x == p.x + x and piece.boardPosition.y == p.y + y:
+			newMoves.append(Vector2i(p.x + x, p.y + y))
+			enemyOnSquare = true
+	for piece in teamPieces:
+		if piece.boardPosition.x == p.x + x and piece.boardPosition.y == p.y + y:
+			teamOnSquare = true
+	if enemyOnSquare == false and teamOnSquare == false:
+		newMoves.append(Vector2i(p.x + x, p.y + y))
+		newMoves.append_array(slide(Vector2i(p.x + x, p.y + y), x, y, enemyPieces, teamPieces))
+	return newMoves

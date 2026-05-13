@@ -7,5 +7,11 @@ func _process(_delta) -> void:
 	$AnimatedSprite2D.play(colour)
 
 
-#func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
-	#pass
+func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
+	#move up
+	#move down
+	#move right
+	#move left
+	var newMoves: Array
+	newMoves.append_array(slide(boardPosition, 1, 0, enemyPieces, teamPieces))
+	return newMoves
