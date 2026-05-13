@@ -13,5 +13,8 @@ func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Arra
 	#move right
 	#move left
 	var newMoves: Array
+	newMoves.append_array(slide(boardPosition, -1, 0, enemyPieces, teamPieces))
 	newMoves.append_array(slide(boardPosition, 1, 0, enemyPieces, teamPieces))
+	newMoves.append_array(slide(boardPosition, 0, 1, enemyPieces, teamPieces))
+	newMoves.append_array(slide(boardPosition, 0, -1, enemyPieces, teamPieces))
 	return newMoves
