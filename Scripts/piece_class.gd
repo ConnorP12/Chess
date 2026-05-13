@@ -41,7 +41,7 @@ func _on_board_square_clicked(square: Vector2i) -> void:
 				held = false
 				piece_moved.emit()
 		
-func slide( p: Vector2i, x: int, y: int, enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
+static func slide( p: Vector2i, x: int, y: int, enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
 	var newMoves: Array
 	var teamOnSquare: bool = false
 	var enemyOnSquare: bool = false

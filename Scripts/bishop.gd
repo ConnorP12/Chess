@@ -14,83 +14,9 @@ func _process(_delta: float) -> void:
 
 
 func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
-	var move: Array
-	var newPosition: Vector2i = Vector2i(boardPosition)
-	var enemyPieceOnPosition := false
-	var teamPieceOnPosition := false
-	while newPosition.x < 7 and newPosition.y < 7:
-		newPosition.x += 1
-		newPosition.y += 1
-		for enemyPiece in enemyPieces:
-			if enemyPiece.boardPosition == newPosition:
-				enemyPieceOnPosition = true
-		for teamPiece in teamPieces:
-			if teamPiece.boardPosition == newPosition:
-				teamPieceOnPosition = true
-		if enemyPieceOnPosition == true:
-			move.append(newPosition)
-			break
-		elif teamPieceOnPosition == true:
-			break
-		else:
-			move.append(newPosition)
-
-	
-	newPosition = Vector2i(boardPosition)
-	enemyPieceOnPosition = false
-	teamPieceOnPosition = false
-	while newPosition.x > 0 and newPosition.y > 0:
-		newPosition.x -= 1
-		newPosition.y -= 1
-		for enemyPiece in enemyPieces:
-			if enemyPiece.boardPosition == newPosition:
-				enemyPieceOnPosition = true
-		for teamPiece in teamPieces:
-			if teamPiece.boardPosition == newPosition:
-				teamPieceOnPosition = true
-		if enemyPieceOnPosition == true:
-			move.append(newPosition)
-			break
-		elif teamPieceOnPosition == true:
-			break
-		else:
-			move.append(newPosition)
-	newPosition = Vector2i(boardPosition)
-	enemyPieceOnPosition = false
-	teamPieceOnPosition = false
-	while newPosition.x > 0 and newPosition.y < 7:
-		newPosition.x -= 1
-		newPosition.y += 1
-		for enemyPiece in enemyPieces:
-			if enemyPiece.boardPosition == newPosition:
-				enemyPieceOnPosition = true
-		for teamPiece in teamPieces:
-			if teamPiece.boardPosition == newPosition:
-				teamPieceOnPosition = true
-		if enemyPieceOnPosition == true:
-			move.append(newPosition)
-			break
-		elif teamPieceOnPosition == true:
-			break
-		else:
-			move.append(newPosition)
-	newPosition = Vector2i(boardPosition)
-	enemyPieceOnPosition = false
-	teamPieceOnPosition = false
-	while newPosition.x < 7 and newPosition.y > 0:
-		newPosition.x += 1
-		newPosition.y -= 1
-		for enemyPiece in enemyPieces:
-			if enemyPiece.boardPosition == newPosition:
-				enemyPieceOnPosition = true
-		for teamPiece in teamPieces:
-			if teamPiece.boardPosition == newPosition:
-				teamPieceOnPosition = true
-		if enemyPieceOnPosition == true:
-			move.append(newPosition)
-			break
-		elif teamPieceOnPosition == true:
-			break
-		else:
-			move.append(newPosition)
-	return move
+	var newMoves: Array
+	newMoves.append_array(Piece.slide(boardPosition, -1, -1, enemyPieces, teamPieces))
+	newMoves.append_array(Piece.slide(boardPosition, -1, 1, enemyPieces, teamPieces))
+	newMoves.append_array(Piece.slide(boardPosition, 1, -1, enemyPieces, teamPieces))
+	newMoves.append_array(Piece.slide(boardPosition, 1, 1, enemyPieces, teamPieces))
+	return newMoves
