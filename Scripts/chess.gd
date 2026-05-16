@@ -5,6 +5,7 @@ extends Node2D
 @onready var bishop = preload("res://Scenes/bishop.tscn")
 @onready var human = preload("res://Scenes/human.tscn")
 @onready var rook = preload("res://Scenes/rook.tscn")
+@onready var queen = preload("res://Scenes/queen.tscn")
 @onready var board = %Board
 var player = {}
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,7 @@ func _ready() -> void:
 	for p in player.values():
 		add_child(p)
 	# add a piece
-	player["black"].piece.append(bishop.instantiate())
+	player["black"].piece.append(queen.instantiate())
 	player["white"].piece.append(rook.instantiate())
 	player["white"].add_pieces()
 
