@@ -27,6 +27,8 @@ func _process(_delta: float) -> void:
 		pass
 
 
+
+
 func _on_board_square_clicked(square: Vector2i) -> void:
 	if selected == false:
 		if square == boardPosition:

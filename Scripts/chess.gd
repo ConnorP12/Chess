@@ -67,3 +67,6 @@ func _on_player_turn_over() -> void:
 					player["white"].piece.erase(piece)
 					piece.queue_free()
 	
+
+
+	
