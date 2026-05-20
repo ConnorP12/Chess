@@ -6,6 +6,7 @@ extends Node2D
 @onready var human = preload("res://Scenes/human.tscn")
 @onready var rook = preload("res://Scenes/rook.tscn")
 @onready var queen = preload("res://Scenes/queen.tscn")
+@onready var knight = preload("res://Scenes/knight.tscn")
 @onready var board = %Board
 var player = {}
 # Called when the node enters the scene tree for the first time.
@@ -20,7 +21,7 @@ func _ready() -> void:
 	for p in player.values():
 		add_child(p)
 	# add a piece
-	player["black"].piece.append(queen.instantiate())
+	player["black"].piece.append(knight.instantiate())
 	player["white"].piece.append(rook.instantiate())
 	player["white"].add_pieces()
 
@@ -36,16 +37,19 @@ func _ready() -> void:
 
 	for piece in player["black"].piece:
 		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
+		piece.turn = false
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
 		piece.moves = piece.possible_moves(player["black"].piece, player["white"].piece)
+		piece.turn = true
 
 
 	
 func _on_player_turn_over() -> void:
 	player["black"].turn = not player["black"].turn
 	for piece in player["black"].piece:
+		piece.turn = not piece.turn
 		piece.moves = piece.possible_moves(player["white"].piece, player["black"].piece)
 		if player["black"].turn == true:
 			for enemyPiece in player["white"].piece:
@@ -55,6 +59,7 @@ func _on_player_turn_over() -> void:
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
+		piece.turn = not piece.turn
 		piece.moves = piece.possible_moves(player["black"].piece, player["white"].piece)
 		if player["white"].turn == true:
 			for enemyPiece in player["black"].piece:

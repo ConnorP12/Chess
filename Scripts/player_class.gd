@@ -13,4 +13,5 @@ func add_pieces() -> void:
 		p.colour = colour
 		
 func _on_piece_moved():
+		
 		turn_over.emit()

@@ -7,7 +7,9 @@ var selected: bool
 var colour: String
 var board
 var held: bool
+var turn: bool
 signal piece_moved
+
 
 func possible_moves(_enemyPieces: Array[Piece], _teamPieces: Array[Piece]) -> Array:
 	moves = [Vector2i(3, 2)]
@@ -34,12 +36,14 @@ func _on_board_square_clicked(square: Vector2i) -> void:
 			selected = false
 			held = false
 	else:
-		for i in moves:
-			if i.x == square.x and i.y == square.y:
-				boardPosition = square
-				selected = false
-				held = false
-				piece_moved.emit()
+		if turn == true:
+			for i in moves:
+				if i.x == square.x and i.y == square.y:
+					boardPosition = square
+					selected = false
+					held = false
+					piece_moved.emit()
+		selected = false
 		
 static func slide( p: Vector2i, x: int, y: int, enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
 	var newMoves: Array
@@ -58,3 +62,10 @@ static func slide( p: Vector2i, x: int, y: int, enemyPieces: Array[Piece], teamP
 			newMoves.append(Vector2i(p.x + x, p.y + y))
 			newMoves.append_array(slide(Vector2i(p.x + x, p.y + y), x, y, enemyPieces, teamPieces))
 	return newMoves
+
+static func goTo ( p: Vector2i, x: int, y: int, _enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> bool:
+	var newMove: Vector2i = Vector2i(p.x + x, p.y + y)
+	for piece in teamPieces:
+		if piece.boardPosition.x == newMove.x and piece.boardPosition.y == newMove.y:
+			return false
+	return true
