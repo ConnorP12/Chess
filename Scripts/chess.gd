@@ -18,11 +18,13 @@ func _ready() -> void:
 		player[p].colour = p
 	player["white"].turn_over.connect(_on_player_turn_over)
 	player["black"].turn_over.connect(_on_player_turn_over)
+	player["white"].direction = -1
+	player["black"].direction = 1
 	
 	for p in player.values():
 		add_child(p)
 	# add a piece
-	player["black"].piece.append(knight.instantiate())
+	player["black"].piece.append(pawn.instantiate())
 	player["white"].piece.append(pawn.instantiate())
 	player["white"].add_pieces()
 
@@ -31,7 +33,7 @@ func _ready() -> void:
 	player["black"].piece[0].board = board
 	player["white"].piece[0].board = board
 	player["white"].piece[0].boardPosition.x = 5
-	player["white"].piece[0].boardPosition.y = 4
+	player["white"].piece[0].boardPosition.y = 5
 
 	board.square_clicked.connect(player["black"].piece[0]._on_board_square_clicked)
 	board.square_clicked.connect(player["white"].piece[0]._on_board_square_clicked)

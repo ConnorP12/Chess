@@ -50,6 +50,7 @@ func _on_board_square_clicked(square: Vector2i) -> void:
 					boardPosition = square
 					selected = false
 					held = false
+					timesMoved += 1
 					piece_moved.emit()
 		selected = false
 		

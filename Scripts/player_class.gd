@@ -4,6 +4,7 @@ class_name Player
 var piece: Array[Piece]
 var colour: String
 var turn: bool
+var direction: int
 signal turn_over
 
 func add_pieces() -> void:
@@ -11,6 +12,7 @@ func add_pieces() -> void:
 		add_child(p)
 		p.piece_moved.connect(_on_piece_moved)
 		p.colour = colour
+		p.direction = direction
 		
 
 func makePiece(newPiece: Piece, x: int, y: int) -> Piece:
