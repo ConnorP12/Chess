@@ -24,4 +24,7 @@ func makePiece(newPiece: Piece, x: int, y: int) -> Piece:
 
 
 func _on_piece_moved():
-		turn_over.emit()
+	for p in piece:
+		if p.canBeEnPassanted and p.whenEnPassant != p.time:
+			p.canBeEnPassanted = false
+	turn_over.emit()

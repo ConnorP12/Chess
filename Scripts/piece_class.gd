@@ -13,6 +13,8 @@ var canBeEnPassanted: bool = false
 var direction: int
 var inCheck: bool = false
 var timesMoved: int = 0
+var whenEnPassant: int = 0 
+var time: int = 0
 signal piece_moved
 
 
