@@ -17,10 +17,9 @@ func makePiece(newPiece: Piece, x: int, y: int) -> Piece:
 	newPiece.boardPosition = Vector2i(x, y)
 	newPiece.piece_moved.connect(_on_piece_moved)
 	newPiece.colour = colour
-
+	return newPiece
 
 
 
 func _on_piece_moved():
-		
 		turn_over.emit()

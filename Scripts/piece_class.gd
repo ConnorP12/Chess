@@ -8,7 +8,13 @@ var colour: String
 var board
 var held: bool
 var turn: bool
+var canEnPassant: bool = false
+var canBeEnPassanted: bool = false
+var direction: int
+var inCheck: bool = false
+var timesMoved: int = 0
 signal piece_moved
+
 
 
 func possible_moves(_enemyPieces: Array[Piece], _teamPieces: Array[Piece]) -> Array:

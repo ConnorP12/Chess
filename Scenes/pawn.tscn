@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bbvwvvhugbjr2"]
+
+[ext_resource type="Script" uid="uid://dvvejrnsfnkb8" path="res://Scripts/piece_class.gd" id="1_culnp"]
+[ext_resource type="Texture2D" uid="uid://1sql4pmy32c8" path="res://Assets/ChessTextures/BPawn.svg" id="2_018tw"]
+[ext_resource type="Texture2D" uid="uid://dl5dp47xg34sb" path="res://Assets/ChessTextures/WPawn.svg" id="3_3ab40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr4cw"]
+atlas = ExtResource("2_018tw")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1whw"]
+atlas = ExtResource("3_3ab40")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq3kh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr4cw")
+}],
+"loop": true,
+"name": &"black",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1whw")
+}],
+"loop": true,
+"name": &"white",
+"speed": 0.0
+}]
+
+[node name="Pawn" type="Node2D" unique_id=54636716]
+script = ExtResource("1_culnp")
+metadata/_custom_type_script = "uid://dvvejrnsfnkb8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=72065193]
+sprite_frames = SubResource("SpriteFrames_xq3kh")
+animation = &"white"
