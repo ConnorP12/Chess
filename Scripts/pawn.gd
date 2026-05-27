@@ -6,6 +6,7 @@ func _process(_delta: float) -> void:
 	$AnimatedSprite2D.play(colour)
 
 func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
+	canEnPassant = true
 	var newMoves: Array
 	if goTo(boardPosition, 0, direction, enemyPieces, teamPieces):
 		newMoves.append(Vector2i(boardPosition.x, boardPosition.y + direction))

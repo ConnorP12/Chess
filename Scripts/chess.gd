@@ -64,6 +64,9 @@ func _on_player_turn_over() -> void:
 				if piece.boardPosition == enemyPiece.boardPosition:
 					player["black"].piece.erase(piece)
 					piece.queue_free()
+				elif enemyPiece.canEnPassant and piece.boardPosition.x == enemyPiece.boardPosition.x and piece.boardPosition.y == enemyPiece.boardPosition.y - enemyPiece.direction and piece.canBeEnPassanted:
+					player["black"].piece.erase(piece)
+					piece.queue_free()
 	
 	player["white"].turn = not player["white"].turn
 	for piece in player["white"].piece:
@@ -73,6 +76,9 @@ func _on_player_turn_over() -> void:
 			for enemyPiece in player["black"].piece:
 				if piece.boardPosition == enemyPiece.boardPosition:
 					player["white"].piece.erase(piece)
+					piece.queue_free()
+				elif enemyPiece.canEnPassant and piece.boardPosition.x == enemyPiece.boardPosition.x and piece.boardPosition.y == enemyPiece.boardPosition.y - enemyPiece.direction and piece.canBeEnPassanted:
+					player["black"].piece.erase(piece)
 					piece.queue_free()
 	
 
