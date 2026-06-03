@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dvvwujuoi34u1"]
+
+[ext_resource type="Script" uid="uid://by073dv471twc" path="res://Scripts/king.gd" id="1_36v0m"]
+[ext_resource type="Texture2D" uid="uid://b8e8353pyae4l" path="res://Assets/ChessTextures/BKing.svg" id="2_72xsc"]
+[ext_resource type="Texture2D" uid="uid://bgeifkewhw83q" path="res://Assets/ChessTextures/WKing.svg" id="3_abtvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkap7"]
+atlas = ExtResource("2_72xsc")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mscfp"]
+atlas = ExtResource("3_abtvy")
+region = Rect2(0, 0, 45, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tglsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkap7")
+}],
+"loop": true,
+"name": &"black",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mscfp")
+}],
+"loop": true,
+"name": &"white",
+"speed": 0.0
+}]
+
+[node name="King" type="Node2D" unique_id=941167105]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_36v0m")
+metadata/_custom_type_script = "uid://dvvejrnsfnkb8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2042764952]
+sprite_frames = SubResource("SpriteFrames_tglsf")
+animation = &"white"

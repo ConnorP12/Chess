@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b44nwulj14cbp"]
+
+[ext_resource type="Script" uid="uid://bn7qkf6f0kwyr" path="res://Scripts/game_over_menu.gd" id="1_arass"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i22rp"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arass"]
+bg_color = Color(0.29998374, 0.70770246, 0.10044248, 1)
+
+[node name="GameOverMenu" type="CanvasLayer" unique_id=1307202210]
+script = ExtResource("1_arass")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1393288690]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -134.0
+offset_right = -87.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.713398, 3.4846568)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1445448468]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=997186407]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_i22rp")
+text = "Game Over
+"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=2028495228]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_arass")
+text = "New Game
+"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -6,23 +6,15 @@ func _process(_delta: float) -> void:
 	super(_delta)
 	$AnimatedSprite2D.play(colour)
 
-func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Array:
-	var newMoves: Array
+func possible_moves(enemyPieces: Array[Piece], teamPieces: Array[Piece]) -> Dictionary:
+	var newMoves: Dictionary
 
-	if goTo(boardPosition, -1, -2,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + -1, boardPosition.y + -2))
-	if goTo(boardPosition, 1, -2,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + 1, boardPosition.y + -2))
-	if goTo(boardPosition, 2, -1,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + 2, boardPosition.y + -1))
-	if goTo(boardPosition, 2, 1,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + 2, boardPosition.y + 1))
-	if goTo(boardPosition, 1, 2,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + 1, boardPosition.y + 2))
-	if goTo(boardPosition, -1, 2,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + -1, boardPosition.y + 2))
-	if goTo(boardPosition, -2, 1,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + -2, boardPosition.y + 1))
-	if goTo(boardPosition, -2, -1,  enemyPieces, teamPieces): 
-		newMoves.append(Vector2i(boardPosition.x + -2, boardPosition.y + -1))
+	newMoves.merge(goTo(boardPosition, -1, -2,  enemyPieces, teamPieces))
+	newMoves.merge(goTo(boardPosition, 1, -2,  enemyPieces, teamPieces))
+	newMoves.merge(goTo(boardPosition, 2, -1,  enemyPieces, teamPieces)) 
+	newMoves.merge(goTo(boardPosition, 2, 1,  enemyPieces, teamPieces))
+	newMoves.merge(goTo(boardPosition, 1, 2,  enemyPieces, teamPieces)) 
+	newMoves.merge(goTo(boardPosition, -1, 2,  enemyPieces, teamPieces))
+	newMoves.merge(goTo(boardPosition, -2, 1,  enemyPieces, teamPieces)) 
+	newMoves.merge(goTo(boardPosition, -2, -1,  enemyPieces, teamPieces))
 	return newMoves
