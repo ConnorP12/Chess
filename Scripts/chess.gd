@@ -2,7 +2,7 @@ extends Node2D
 
  
 
-@onready var game_over_menu = $GameOverMenu
+@onready var game_over_menu = %GameOverMenu
 @onready var bishop = preload("res://Scenes/bishop.tscn")
 @onready var human = preload("res://Scenes/human.tscn")
 @onready var rook = preload("res://Scenes/rook.tscn")
@@ -131,9 +131,9 @@ func _on_player_turn_over() -> void:
 				for move in p.moves.keys():
 					if move == player["white"].king.boardPosition:
 						checkmate = true
-						game_over_menu.show_game_over("noir gagne")
+						game_over_menu.show_game_over("noir gagne\n")
 			if checkmate == false:
-				game_over_menu.show_game_over("match nul")
+				game_over_menu.show_game_over("match nul\n")
 	else:
 		for p in player["black"].piece:
 			totalMoves += p.moves.size()
@@ -142,10 +142,10 @@ func _on_player_turn_over() -> void:
 			for p in player["white"].piece:
 				for move in p.moves.keys():
 					if move == player["black"].king.boardPosition:
-						game_over_menu.show_game_over("blanc gagne")
+						game_over_menu.show_game_over("blanc gagne\n")
 						checkmate = true
 			if checkmate == false:
-				game_over_menu.show_game_over("match nul")
+				game_over_menu.show_game_over("match nul\n")
 	
 
 
